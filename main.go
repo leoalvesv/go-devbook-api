@@ -11,7 +11,7 @@ import (
 func main() {
 	config.Carregar()
 	fmt.Println(config.StringConexaoBanco)
-	fmt.Println("Rodando a API")
+	fmt.Println("API em execução")
 
 	routers := router.Gerar()
 
