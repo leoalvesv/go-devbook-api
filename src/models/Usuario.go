@@ -15,37 +15,37 @@ type Usuario struct {
 	CriadoEm time.Time `json:"criadoEm,omitempty"`
 }
 
-// Preparar vai chamar os métodos para validar e formatar o usuário recebido
+// preparar vai chamar os métodos para validar e formatar o usuário recebido
 func (usuario *Usuario) Preparar() error {
-	if erro := usuario.Validar(); erro != nil {
+	if erro := usuario.validar(); erro != nil {
 		return erro
 	}
 
-	usuario.Formatar()
+	usuario.formatar()
 	return nil
 }
 
-func (usuario *Usuario) Validar() error {
+func (usuario *Usuario) validar() error {
 	if usuario.Nome == "" {
-		return errors.New("O nome é obrigatório e não pode estar em branco")
+		return errors.New("o nome é obrigatório e não pode estar em branco")
 	}
 
 	if usuario.Nick == "" {
-		return errors.New("O nick é obrigatório e não pode estar em branco")
+		return errors.New("o nick é obrigatório e não pode estar em branco")
 	}
 
 	if usuario.Email == "" {
-		return errors.New("O email é obrigatório e não pode estar em branco")
+		return errors.New("o email é obrigatório e não pode estar em branco")
 	}
 
 	if usuario.Senha == "" {
-		return errors.New("A senha é obrigatória e não pode estar em branco")
+		return errors.New("a senha é obrigatória e não pode estar em branco")
 	}
 
 	return nil
 }
 
-func (usuario *Usuario) Formatar() {
+func (usuario *Usuario) formatar() {
 	usuario.Nome = strings.TrimSpace(usuario.Nome)
 	usuario.Nick = strings.TrimSpace(usuario.Nick)
 	usuario.Email = strings.TrimSpace(usuario.Email)
